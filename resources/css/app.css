@@ -1,3 +1,9 @@
 @tailwind base;
 @tailwind component;
 @tailwind utilities;
+
+@media only screen and (max-width: 576px) {
+    .sm\:w-full {
+        width:100vw;
+    }
+}
