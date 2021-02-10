@@ -1,9 +1,7 @@
 @tailwind base;
 @tailwind component;
 @tailwind utilities;
-
-@media only screen and (max-width: 576px) {
-    .sm\:w-full {
-        width:100vw;
-    }
-}
+@import '~@fortawesome/fontawesome-free/css/fontawesome';
+@import '~@fortawesome/fontawesome-free/css/regular';
+@import '~@fortawesome/fontawesome-free/css/solid';
+@import '~@fortawesome/fontawesome-free/css/brands';
