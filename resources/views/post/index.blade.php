@@ -30,7 +30,7 @@
                             <span class="text-gray-600 text-sm">{{ $post->created_at->diffForHumans() }}</span>
                             <p class="mb-2">{{ $post->body }}</p>
                             <div class="flex items-center">
-                                <form action="" method="post" class="mr-2">
+                                <form action="{{ route("posts.likes", $post->id)}}" method="post" class="mr-2">
                                     @csrf
                                     <button type="submit"  class="text-blue-500"><i class="fas fa-thumbs-up"></i></button>
                                 </form>
@@ -38,6 +38,7 @@
                                     @csrf
                                     <button type="submit" class="text-blue-500"><i class="fas fa-thumbs-down"></i></button>
                                 </form>
+                                <span>{{ $post->likes->count() }} {{ Str::plural("Like", $post->likes->count()) }}</span>
                             </div>
                         </div>
                     @endforeach
