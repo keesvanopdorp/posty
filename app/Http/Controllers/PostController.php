@@ -9,7 +9,7 @@ class PostController extends Controller
 {
     public function index()
     {
-        $posts = Post::paginate(20);
+        $posts = Post::with("user", "likes")->latest()->paginate(20);
         return view("post.index", [
             "posts" => $posts
         ]);
@@ -24,5 +24,12 @@ class PostController extends Controller
         auth()->user()->posts()->create($request->only(["body"]));
 
         return back();
+    }
+
+    public function destroy(Post $post, Request $request)
+    {
+        $this->authorize('delete', $post);
+        $request->user()->posts()->where("id", $post->id)->delete();
+        return back()->with("success", "Deleted post!");
     }
 }
