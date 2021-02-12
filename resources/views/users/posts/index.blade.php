@@ -13,7 +13,7 @@
             {{ session('error') }}
         </div>
     @endif
-    <div class="flex justify-center">
+    <div class="flex justify-center bg-white">
 
     </div>
 @endsection
