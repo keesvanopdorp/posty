@@ -10,7 +10,7 @@
     @endif
     @if(session('error'))
         <div class="bg-red-400 w-75 p-4 mb-6 text-white text-center">
-            {{ session('error') }}
+            {{ session('success') }}
         </div>
     @endif
     <div class="flex justify-center">

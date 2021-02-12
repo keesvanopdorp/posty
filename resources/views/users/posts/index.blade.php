@@ -5,7 +5,7 @@
 @section('content')
     @if(session('success'))
         <div class="bg-green-400 w-75 p-4 mb-6 text-white text-center">
-            {{ session('status') }}
+            {{ session('success') }}
         </div>
     @endif
     @if(session('error'))
