@@ -13,7 +13,9 @@
             {{ session('error') }}
         </div>
     @endif
-    <div class="flex justify-center bg-white">
-
+    <div class="flex justify-center">
+        <div class="w-4/12 bg-white p-6 rounded-lg">
+           <h1 class="text-center">{{ $user->name }}</h1>
+        </div>
     </div>
 @endsection
