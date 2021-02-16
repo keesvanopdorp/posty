@@ -4,14 +4,17 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 use App\Models\Post;
+use Illuminate\Support\Facades\Cache;
 
 class PostController extends Controller
 {
     public function index()
     {
-        $posts = Post::with("user", "likes")->latest()->paginate(20);
+        cache()->remember("posts", 5 * 60, function() {
+            return Post::with("user", "likes")->latest()->paginate(20);
+        });
         return view("post.index", [
-            "posts" => $posts
+            "posts" => Cache::get('posts')
         ]);
     }
 
