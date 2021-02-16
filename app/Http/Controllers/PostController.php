@@ -10,9 +10,12 @@ class PostController extends Controller
 {
     public function index()
     {
-        cache()->remember("posts", 5 * 60, function() {
-            return Post::with("user", "likes")->latest()->paginate(20);
-        });
+        if(!Cache::has('posts')){
+            cache()->remember("posts", 2 * 60, function() {
+                return Post::with("user", "likes")->latest()->paginate(20);
+            });
+        }
+
         return view("post.index", [
             "posts" => Cache::get('posts')
         ]);
@@ -26,6 +29,11 @@ class PostController extends Controller
 
         auth()->user()->posts()->create($request->only(["body"]));
 
+        Cache::forget('posts');
+        Cache::remember("posts", 5 * 60, function() {
+            return Post::with("user", "likes")->latest()->paginate(20);
+        });
+
         return back();
     }
 
@@ -33,6 +41,10 @@ class PostController extends Controller
     {
         $this->authorize('delete', $post);
         $request->user()->posts()->where("id", $post->id)->delete();
+        Cache::forget('posts');
+        Cache::remember("posts", 5 * 60, function() {
+            return Post::with("user", "likes")->latest()->paginate(20);
+        });
         return back()->with("success", "Deleted post!");
     }
 }
