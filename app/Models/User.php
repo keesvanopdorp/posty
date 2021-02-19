@@ -2,9 +2,12 @@
 
 namespace App\Models;
 
+use App\Models\Post;
+use App\Models\Role;
 use App\Models\PostLikes;
 use Illuminate\Notifications\Notifiable;
 use Illuminate\Contracts\Auth\MustVerifyEmail;
+use Illuminate\Database\Eloquent\Relations\HasMany;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Foundation\Auth\User as Authenticatable;
 
@@ -43,13 +46,23 @@ class User extends Authenticatable implements MustVerifyEmail
         'email_verified_at' => 'datetime',
     ];
 
-    public function posts()
+    public function posts(): HasMany
     {
         return $this->hasMany(Post::class);
     }
 
-    public function likes()
+    public function likes(): HasMany
     {
         return $this->hasMany(PostLikes::class);
+    }
+
+    /**
+     * Get all of the comments for the User
+     *
+     * @return HasMany
+     */
+    public function userRole(): HasMany
+    {
+        return $this->hasMany(userRole::class);
     }
 }

@@ -15,7 +15,7 @@
     @endif
     <div class="flex justify-center">
         <div class="w-4/12 bg-white p-6 rounded-lg">
-           <h1 class="text-center">{{ $user->name }}</h1>
+           <h1 class="text-center text-danger">{{ $user->name }}</h1>
            @if($posts->count())
                     @foreach ($posts as $post)
                         <div class="mb-4">
