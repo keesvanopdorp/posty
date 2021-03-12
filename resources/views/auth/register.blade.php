@@ -9,7 +9,7 @@
                 @csrf
                 <div class="mb-4">
                     <label for="name" class="sr-only">name</label>
-                    <input type="text" name="name" value="{{old('name')}}" required id="name" placeholder="Your name" class="bg-gray-100 border-2 p-4 w-full rounded-lg @error('name') text-red border-red-500 @enderror">
+                    <input type="text" name="name" autocomplete="name" value="{{old('name')}}" required id="name" placeholder="Your name" class="bg-gray-100 border-2 p-4 w-full rounded-lg @error('name') text-red border-red-500 @enderror">
                     @error('name')
                         <div class="text-red-500 mt-2 text-sm">
                             {{$message}}
@@ -18,7 +18,7 @@
                 </div>
                 <div class="mb-4">
                     <label for="name" class="sr-only">username</label>
-                    <input type="text" name="username" value="{{old('username')}}" required min="0" max="100" id="username" placeholder="Username" class="bg-gray-100 border-2 p-4 w-full rounded-lg @error('username') text-red border-red-500 @enderror">
+                    <input type="text" name="username" autocomplete="username" value="{{old('username')}}" required min="0" max="100" id="username" placeholder="Username" class="bg-gray-100 border-2 p-4 w-full rounded-lg @error('username') text-red border-red-500 @enderror">
                     @error('username')
                         <div class="text-red-500 mt-2 text-sm">
                             {{$message}}
@@ -27,7 +27,7 @@
                 </div>
                 <div class="mb-4">
                     <label for="name" class="sr-only">email</label>
-                    <input type="email" name="email" value="{{old('email')}}" required min="0" max="255" id="email" placeholder="Your email" class="bg-gray-100 border-2 p-4 w-full rounded-lg @error('email') text-red border-red-500 @enderror">
+                    <input type="email" name="email" autocomplete="email" value="{{old('email')}}" required min="0" max="255" id="email" placeholder="Your email" class="bg-gray-100 border-2 p-4 w-full rounded-lg @error('email') text-red border-red-500 @enderror">
                     @error('email')
                         <div class="text-red-500 mt-2 text-sm">
                             {{$message}}
@@ -36,7 +36,7 @@
                 </div>
                  <div class="mb-4">
                     <label for="password" class="sr-only">password</label>
-                    <input type="password" name="password" required min="0" max="255" id="password" placeholder="Your password" class="bg-gray-100 border-2 p-4 w-full rounded-lg @error('password') text-red border-red-500 @enderror">
+                    <input type="password" name="password" autocomplete="new-password" required min="0" max="255" id="password" placeholder="Your password" class="bg-gray-100 border-2 p-4 w-full rounded-lg @error('password') text-red border-red-500 @enderror">
                     @error('password')
                         <div class="text-red-500 mt-2 text-sm">
                             {{$message}}
@@ -45,7 +45,7 @@
                 </div>
                  <div class="mb-4">
                     <label for="password_confirmation" class="sr-only">password</label>
-                    <input type="password" name="password_confirmation" required min="0" max="255" id="password_confirmation" placeholder="Your password" class="bg-gray-100 border-2 p-4 w-full rounded-lg  @error('password_confirmation') text-red border-red-500 @enderror">
+                    <input type="password" name="password_confirmation" autocomplete="new-password" required min="0" max="255" id="password_confirmation" placeholder="Your password" class="bg-gray-100 border-2 p-4 w-full rounded-lg  @error('password_confirmation') text-red border-red-500 @enderror">
                     @error('password_confirmation')
                         <div class="text-red-500 mt-2 text-sm">
                             {{$message}}

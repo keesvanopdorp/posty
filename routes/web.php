@@ -1,6 +1,7 @@
 <?php
 
 use Illuminate\Http\Request;
+use Felix\RickRoll\Facades\RickRoll;
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\PostController;
 use App\Http\Controllers\PostLikeController;
@@ -9,8 +10,6 @@ use App\Http\Controllers\DashboardController;
 use App\Http\Controllers\Auth\LoginController;
 use App\Http\Controllers\Auth\LogoutController;
 use App\Http\Controllers\Auth\RegisterController;
-use Illuminate\Foundation\Auth\EmailVerificationRequest;
-
 /*
 |--------------------------------------------------------------------------
 | Web Routes
@@ -21,6 +20,9 @@ use Illuminate\Foundation\Auth\EmailVerificationRequest;
 | contains the "web" middleware group. Now create something great!
 |
 */
+
+RickRoll::routes();
+
 Route::get('/dashboard', [DashboardController::class, "index"])->name('dashboard')->middleware(["auth", "verified"]);
 
 Route::get('/', function () {
@@ -58,3 +60,7 @@ Route::post('/email/verification-notification', function (Request $request) {
 
     return back()->with('message', 'Verification link sent!');
 })->middleware(['auth', 'throttle:6,1'])->name('verification.send');
+
+Route::fallback(function() {
+    rickroll();
+});

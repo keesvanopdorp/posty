@@ -10,9 +10,6 @@ class UserPostController extends Controller
 {
     public function index(User $user)
     {
-        foreach($user->userRole as $userRole) {
-            var_dump($userRole->role->name);
-        }
         $key = sprintf("user:%i:posts", $user->id);
         if(!Cache::has($key)){
             Cache::remember($key, 2 * 60, function () use ($user) {
